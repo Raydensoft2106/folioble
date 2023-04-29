@@ -1,0 +1,7 @@
+investment,type,investedAmountinUSDValue,valueInShares_today,valueInShares_yesterday,change in daily %,valueInShares_lastweek,change in weekly %
+BTC-USD,crypto,10000,0,0,0,0,0
+ETH-USD,crypto,5000,0,0,0,0,0
+TSLA,stocks,3000,0,0,0,0,0
+MU,stocks,3000,0,0,0,0,0
+DOGE-USD,crypto,10000,0,0,0,0,0
+GC=F,stocks,3000,0,0,0,0,0

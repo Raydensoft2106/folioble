@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My Table</title>
+	<style>
+		#add-row-btn {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			float: right;
+			margin-top: 10px;
+		}
+
+		#spinner {
+			display: none;
+			border: 16px solid #f3f3f3;
+			/* Light grey */
+			border-top: 16px solid #4CAF50;
+			/* Green */
+			border-radius: 50%;
+			width: 120px;
+			height: 120px;
+			animation: spin 2s linear infinite;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -60px;
+			margin-left: -60px;
+			z-index: 1;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.readonly-input {
+			background-color: #f1f1f1;
+			color: #888;
+			cursor: not-allowed;
+		}
+
+		.panel {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
+
+		.panel-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			padding-top: 120px;
+			padding-bottom: 120px;
+			padding-left: 240px;
+			padding-right: 240px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			max-width: 80%;
+			max-height: 80%;
+			overflow: auto;
+		}
+
+		table [data-hidden] {
+			display: none;
+		}
+
+		table tr td:last-of-type {
+			/* background-color: white */
+			/* border-color: white */
+			margin-left: 25px;
+		}
+
+		.row.roomy {
+			margin: 10px auto 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<table id="my-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Gender</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" name="name" placeholder="Enter name"></td>
+				<td><input type="text" name="age" placeholder="Enter age"></td>
+				<td><input type="text" name="gender" placeholder="Enter gender"></td>
+				<td><button onclick="addRow()">Add Row</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<button id="update-btn" onclick="updateTable()">Update Table</button>
+	<div id="spinner"></div>
+
+	<button class="btn" onclick="openPanel()">Open Panel</button>
+	<div class="panel" id="myPanel">
+		<div class="panel-content">
+
+			<div class="col-md-2"></div>
+			<header class="col-md-8 text-center">
+				<h1>Bootstrap Table Build</h1>
+			</header>
+			<div class="col-md-2"></div>
+			<div class="container">
+				<button type='button' onClick='javascript:$("#demo-3").tabularInput("addRow")'
+					class="btn btn-primary">Add New Row</button>
+				<button type='button' onClick='javascript:$("#demo-3").tabularInput("deleteRow")'
+					class="btn btn-primary">Delete Last Row</button>
+				<div id="demo-3">
+				</div>
+			</div>
+
+			<button class="btn" onclick="closePanel()">Close Panel</button>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+		<script src="dist/js/tabular-input.js"></script>
+		<script>
+
+			jQuery('#demo-3').tabularInput({
+				'rows': 5,
+				'columns': 3,
+				'columnHeads': ['Ticker', 'Type', 'Amount']
+			});
+
+			$("#demo-3").tabularInput("addRow");			// Add a row at the end
+			$("#demo-3").tabularInput("deleteRow");			// Delete the last row
+			$("#demo-3").tabularInput("deleteRow", 2);		// Delete row at index 2
+
+		</script>
+
+
+		<script>
+
+
+			function openPanel() {
+				document.getElementById("myPanel").style.display = "block";
+			}
+
+			function closePanel() {
+				document.getElementById("myPanel").style.display = "none";
+			}
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-36251023-1']);
+			_gaq.push(['_setDomainName', 'jqueryscript.net']);
+			_gaq.push(['_trackPageview']);
+
+			(function () {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+</body>
+
+</html>

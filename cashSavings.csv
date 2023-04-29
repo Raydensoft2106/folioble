@@ -1,0 +1,3 @@
+currency,type,date put aside,initial amount,buying power now,buying power decrease %
+USD=X,emergency savings,2022-01-01,5000,0,0
+GBP=X,emergency savings,2021-01-01,1000,0,0
